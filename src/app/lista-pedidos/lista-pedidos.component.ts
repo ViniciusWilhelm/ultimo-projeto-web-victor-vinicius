@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
+import { PedidosService }  from '../pedidos/pedidos.service';
 @Component({
   selector: 'app-lista-pedidos',
   templateUrl: './lista-pedidos.component.html',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListaPedidosComponent implements OnInit {
 
-  constructor() { }
+  pedido: any = new Object();
+  constructor(private pedidosService: PedidosService) {}
 
+  
   ngOnInit() {
-  }
 
+  }
 }

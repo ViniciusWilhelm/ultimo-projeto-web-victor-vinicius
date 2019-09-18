@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { PedidosComponent } from './pedidos/pedidos.component';
 import { ListaPedidosComponent } from './lista-pedidos/lista-pedidos.component';
+import { DetalhePedidosComponent } from './detalhe-pedidos/detalhe-pedidos.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { ListaPedidosComponent } from './lista-pedidos/lista-pedidos.component';
     HomeComponent,
     PedidosComponent,
     ListaPedidosComponent,
+    DetalhePedidosComponent,
   ],
   imports: [
     BrowserModule,

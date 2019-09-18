@@ -12,14 +12,9 @@
     </div>
     <button type="submit" [disabled]="!f.valid" class="btn btn-primary">Submeter</button>
 </form>
-<a *ngFor="let pedido of pedidos">
-    <div>
-        <h4>
-            <ul>
-            <li>
-                {{pedido.numero}}
-            </li>
-            </ul>
-        </h4>
-    </div>
+<a *ngFor="let pedido of pedidos"
+    routerLink="/detalhepedidos/{{pedido.id}}">
+  <div>
+    <h4>{{pedido.numero}}</h4>
+  </div>
 </a>
