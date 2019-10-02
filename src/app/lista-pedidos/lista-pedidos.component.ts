@@ -9,11 +9,15 @@ import { PedidosService }  from '../pedidos/pedidos.service';
 })
 export class ListaPedidosComponent implements OnInit {
 
-  pedido: any = new Object();
+  pedidos: any[] = [];
   constructor(private pedidosService: PedidosService) {}
 
-  
-  ngOnInit() {
 
+  ngOnInit(): void {
+    this.getPedidos();
+  }
+  
+  getPedidos(): void {
+    this.pedidos = this.pedidosService.getPedidos();
   }
 }

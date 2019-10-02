@@ -27,6 +27,7 @@ export class PedidosComponent implements OnInit {
       this.service.salvar(this.pedido);
       this.pedido = new Object();
       this.pedidos = this.service.getPedidos();
+      alert('Registro salvo com sucesso');
     }
   }
 

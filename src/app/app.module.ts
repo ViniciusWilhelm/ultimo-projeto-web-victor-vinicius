@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { PedidosComponent } from './pedidos/pedidos.component';
 import { ListaPedidosComponent } from './lista-pedidos/lista-pedidos.component';
 import { DetalhePedidosComponent } from './detalhe-pedidos/detalhe-pedidos.component';
+import { PedidosService } from './pedidos/pedidos.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { DetalhePedidosComponent } from './detalhe-pedidos/detalhe-pedidos.compo
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [PedidosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

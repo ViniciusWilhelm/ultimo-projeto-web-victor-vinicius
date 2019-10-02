@@ -10,11 +10,8 @@
             placeholder="Numero" required #numero="ngModel" [(ngModel)]="pedido.numero">
         </div>
     </div>
-    <button type="submit" [disabled]="!f.valid" class="btn btn-primary">Submeter</button>
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3">
+        <button type="submit" [disabled]="!f.valid" class="btn btn-primary">Submeter</button>
+        <button routerLink="/pedidos" class="btn btn-primary" >Voltar</button>
+    </div>
 </form>
-<a *ngFor="let pedido of pedidos"
-    routerLink="/detalhepedidos/{{pedido.id}}">
-  <div>
-    <h4>{{pedido.numero}}</h4>
-  </div>
-</a>
