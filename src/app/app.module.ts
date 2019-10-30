@@ -9,6 +9,12 @@ import { PedidosComponent } from './pedidos/pedidos.component';
 import { ListaPedidosComponent } from './lista-pedidos/lista-pedidos.component';
 import { DetalhePedidosComponent } from './detalhe-pedidos/detalhe-pedidos.component';
 import { PedidosService } from './pedidos/pedidos.service';
+import { ProdutosComponent } from './produtos/produtos.component';
+import { ListaProdutosComponent } from './lista-produtos/lista-produtos.component';
+import { DetalheProdutosComponent } from './detalhe-produtos/detalhe-produtos.component';
+import { ClientesComponent } from './clientes/clientes.component';
+import { ListaClientesComponent } from './lista-clientes/lista-clientes.component';
+import { DetalheClientesComponent } from './detalhe-clientes/detalhe-clientes.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +23,12 @@ import { PedidosService } from './pedidos/pedidos.service';
     PedidosComponent,
     ListaPedidosComponent,
     DetalhePedidosComponent,
+    ProdutosComponent,
+    ListaProdutosComponent,
+    DetalheProdutosComponent,
+    ClientesComponent,
+    ListaClientesComponent,
+    DetalheClientesComponent,
   ],
   imports: [
     BrowserModule,

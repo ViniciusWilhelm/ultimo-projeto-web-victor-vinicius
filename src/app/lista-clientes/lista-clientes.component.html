@@ -1,0 +1,14 @@
+<br>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3">
+    <h1 class="h2">Clientes</h1>
+</div>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+    <button class="btn btn-primary" routerLink="/cadastrarclientes">Cadastrar cliente</button>
+    <button class="btn btn-primary" >Excluir cliente</button>
+</div>
+<a *ngFor="let cliente of clientes"
+    routerLink="/detalheclientes/{{cliente.id}}">
+  <div>
+    <h4>{{produto.numero}}</h4>
+  </div>
+</a>
