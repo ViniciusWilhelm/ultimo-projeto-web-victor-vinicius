@@ -15,6 +15,9 @@ import { DetalheProdutosComponent } from './detalhe-produtos/detalhe-produtos.co
 import { ClientesComponent } from './clientes/clientes.component';
 import { ListaClientesComponent } from './lista-clientes/lista-clientes.component';
 import { DetalheClientesComponent } from './detalhe-clientes/detalhe-clientes.component';
+import { FuncionariosComponent } from './funcionarios/funcionarios.component';
+import { DetalheFuncionariosComponent } from './detalhe-funcionarios/detalhe-funcionarios.component';
+import { ListaFuncionariosComponent } from './lista-funcionarios/lista-funcionarios.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,9 @@ import { DetalheClientesComponent } from './detalhe-clientes/detalhe-clientes.co
     ClientesComponent,
     ListaClientesComponent,
     DetalheClientesComponent,
+    FuncionariosComponent,
+    DetalheFuncionariosComponent,
+    ListaFuncionariosComponent,
   ],
   imports: [
     BrowserModule,
