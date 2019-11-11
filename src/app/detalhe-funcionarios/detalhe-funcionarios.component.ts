@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ClientesService }  from '../clientes/clientes.service';
+import { FuncionariosService }  from '../funcionarios/funcionarios.service';
 
 
 @Component({
@@ -12,16 +12,16 @@ export class DetalheFuncionariosComponent implements OnInit {
 
   funcionario: any = new Object();
   constructor(private route: ActivatedRoute,
-    private clientesService: ClientesService
+    private funcionariosService: FuncionariosService
   ) {}
 
 
   ngOnInit(): void {
-    this.getCliente();
+    this.getFuncionario();
   }
   
-  getCliente(): void {
+  getFuncionario(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    this.cliente = this.clientesService.getCliente(id);
+    this.funcionario = this.funcionariosService.getFuncionario(id);
   }
 }

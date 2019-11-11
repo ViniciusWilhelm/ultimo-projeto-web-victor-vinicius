@@ -10,6 +10,9 @@ import { DetalheProdutosComponent } from './detalhe-produtos/detalhe-produtos.co
 import { ClientesComponent } from './clientes/clientes.component';
 import { ListaClientesComponent } from './lista-clientes/lista-clientes.component';
 import { DetalheClientesComponent } from './detalhe-clientes/detalhe-clientes.component';
+import { FuncionariosComponent } from './funcionarios/funcionarios.component';
+import { ListaFuncionariosComponent } from './lista-funcionarios/lista-funcionarios.component';
+import { DetalheFuncionariosComponent } from './detalhe-funcionarios/detalhe-funcionarios.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -25,7 +28,11 @@ const routes: Routes = [
 
   { path: 'clientes', component: ListaClientesComponent },
   { path: 'cadastrarclientes', component: ClientesComponent },
-  { path: 'detalheclientes/:id', component: DetalheClientesComponent }
+  { path: 'detalheclientes/:id', component: DetalheClientesComponent },
+
+  { path: 'funcionarios', component: ListaFuncionariosComponent },
+  { path: 'cadastrarfuncionarios', component: FuncionariosComponent },
+  { path: 'detalhefuncionarios/:id', component: DetalheFuncionariosComponent }
 ];
 
 @NgModule({

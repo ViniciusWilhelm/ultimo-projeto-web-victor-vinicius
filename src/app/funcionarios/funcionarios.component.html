@@ -1,1 +1,17 @@
-<p>funcionarios works!</p>
+<br>
+<h1>Funcionarios</h1>
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" class="form-horizontal">
+    <div class="form-group">
+        <div class="col-sm-12">
+            <label for="Nome" class="control-label">Nome</label>
+        </div>
+        <div class="col-sm-12">
+            <input type="text" class="form-control" name="nome" id="nome" 
+            placeholder="Nome" required #nome="ngModel" [(ngModel)]="funcionario.nome">
+        </div>
+    </div>
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3">
+        <button type="submit" [disabled]="!f.valid" class="btn btn-primary">Submeter</button>
+        <button routerLink="/funcionarios" class="btn btn-primary" >Voltar</button>
+    </div>
+</form>
