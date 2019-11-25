@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ProdutosService } from './produtos.service';
+import { Produto } from './produtos';
 
 @Component({
   selector: 'app-produtos',
@@ -9,25 +10,34 @@ import { ProdutosService } from './produtos.service';
 })
 export class ProdutosComponent implements OnInit {
 
-  produto: any;
-  produtos: any[] = [];
+  //produto: any;
+  //produtos: any[] = [];
+
+  private newProduct: Produto;
+
+  private produtos: Produto[];
 
   constructor(private service: ProdutosService) { }
 
   ngOnInit() {
-    this.produto = new Object();
-    this.produtos = this.service.getProdutos();
+    this.newProduct = new Produto();
+    this.getProdutos();
+  }
+
+  getProdutos(): void {
+    //this.ProdutosService.getProdutos().salvar(
+    ProdutosService.getProducts().salvar  
+    produtos => this.produtos = produtos);
   }
 
   onSubmit(formulario: NgForm) {
     if (formulario.valid) {
-      this.produto.id =  
-      Math.random().toString(36).substring(2, 15) 
-      + Math.random().toString(36).substring(2, 15);
-      this.service.salvar(this.produto);
-      this.produto = new Object();
-      this.produtos = this.service.getProdutos();
-      alert('Registro salvo com sucesso');
+      ProdutosService.createProduct(this.newProduct).subscribe(
+        id => {
+          this.newProduct = new Produto();
+          this.getProdutos();
+        }
+      );
     }
   }
 
