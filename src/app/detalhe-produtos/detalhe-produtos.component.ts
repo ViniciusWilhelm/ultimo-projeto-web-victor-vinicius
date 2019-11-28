@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
+import { Produto } from '../produtos/Produtos';
 import { ProdutosService }  from '../produtos/produtos.service';
 
 @Component({
@@ -10,11 +10,11 @@ import { ProdutosService }  from '../produtos/produtos.service';
 })
 export class DetalheProdutosComponent implements OnInit {
 
-  produto: any = new Object();
-  constructor(private route: ActivatedRoute,
-    private produtosService: ProdutosService
-  ) {}
 
+  constructor(private route: ActivatedRoute,
+    private produtosService: ProdutosService) {}
+
+  private produto;
 
   ngOnInit(): void {
     this.getProduto();
@@ -24,5 +24,6 @@ export class DetalheProdutosComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.produto = this.produtosService.getProduto(id);
   }
+  
 
 }

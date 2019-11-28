@@ -10,8 +10,7 @@ import { Produto } from './Produtos';
 })
 export class ProdutosService {
   
-  apiURL = 'http://localhost:8080';
-  produtos: any[] = [];
+  apiURL = '/api';
 
   constructor(private http: HttpClient) { }
 
@@ -22,57 +21,49 @@ export class ProdutosService {
   }
 
   getProdutos(): Observable<Produto[]> {
-    return this.http.get<Produto[]>(this.apiURL + '/product/list')
+    return this.http.get<Produto[]>(this.apiURL + '/produto/lista')
+    .pipe(
+      retry(1),
+      catchError(this.handleError)
+    )
+  }
+  getProduto(produto): Observable<Produto[]> {
+    return this.http.get<Produto[]>(this.apiURL + '/detalheprodutos/' + produto.id)
     .pipe(
       retry(1),
       catchError(this.handleError)
     )
   }
 
-  // HttpClient API get() method => Fetch product
-  getProduct(id): Observable<Produto> {
-    return this.http.get<Produto>(this.apiURL + '/product/' + id + '/details')
+  createProduto(produto): Observable<Produto> {
+    return this.http.post<Produto>(this.apiURL + '/produto', JSON.stringify(produto), this.httpOptions)
     .pipe(
       retry(1),
       catchError(this.handleError)
     )
   }
 
-  // HttpClient API post() method => Create product
-  createProduct(product): Observable<Number> {
-    return this.http.post<Number>(this.apiURL + '/product', JSON.stringify(product), this.httpOptions)
+  updateProduto(id, produto): Observable<Number> {
+    return this.http.put<Number>(this.apiURL + '/produto/' + id, JSON.stringify(produto), this.httpOptions)
     .pipe(
       retry(1),
       catchError(this.handleError)
     )
   }
 
-  // HttpClient API put() method => Update product
-  updateProduct(id, product): Observable<Produto> {
-    return this.http.put<Produto>(this.apiURL + '/products/' + id, JSON.stringify(product), this.httpOptions)
+  deleteProduto(id){
+    return this.http.delete<Produto>(this.apiURL + '/produto/' + id, this.httpOptions)
     .pipe(
       retry(1),
       catchError(this.handleError)
     )
   }
 
-  // HttpClient API delete() method => Delete product
-  deleteProduct(id){
-    return this.http.delete<Produto>(this.apiURL + '/products/' + id, this.httpOptions)
-    .pipe(
-      retry(1),
-      catchError(this.handleError)
-    )
-  }
-
-  // Error handling
   handleError(error) {
      let errorMessage = '';
      if(error.error instanceof ErrorEvent) {
-       // Get client-side error
        errorMessage = error.error.message;
      } else {
-       // Get server-side error
        errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
      }
      window.alert(errorMessage);

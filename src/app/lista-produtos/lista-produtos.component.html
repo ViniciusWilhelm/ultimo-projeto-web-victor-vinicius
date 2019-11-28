@@ -6,9 +6,10 @@
     <button class="btn btn-primary" routerLink="/cadastrarprodutos">Cadastrar produto</button>
     <button class="btn btn-primary" >Excluir produto</button>
 </div>
+
 <a *ngFor="let produto of produtos"
-    routerLink="/detalheprodutos/{{produto.id}}">
+routerLink="/detalheprodutos/{{produto.id}}">
   <div>
-    <h4>{{produto.numero}}</h4>
+    <h4>{{produto.nome}}</h4>
   </div>
 </a>

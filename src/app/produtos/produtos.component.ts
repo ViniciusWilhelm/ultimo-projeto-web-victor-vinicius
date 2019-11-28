@@ -10,35 +10,33 @@ import { Produto } from './produtos';
 })
 export class ProdutosComponent implements OnInit {
 
-  //produto: any;
-  //produtos: any[] = [];
+  private newProduto : Produto;
 
-  private newProduct: Produto;
+  private produtos : Produto[];
 
-  private produtos: Produto[];
-
-  constructor(private service: ProdutosService) { }
+  constructor(private ProdutosService: ProdutosService) {
+  }
 
   ngOnInit() {
-    this.newProduct = new Produto();
+    this.newProduto = new /*Object*/Produto();
     this.getProdutos();
   }
 
-  getProdutos(): void {
-    //this.ProdutosService.getProdutos().salvar(
-    ProdutosService.getProducts().salvar  
-    produtos => this.produtos = produtos);
-  }
-
-  onSubmit(formulario: NgForm) {
-    if (formulario.valid) {
-      ProdutosService.createProduct(this.newProduct).subscribe(
+  onSubmit(form: NgForm) {
+    if (form.valid) {
+      this.ProdutosService.createProduto(this.newProduto).subscribe(
         id => {
-          this.newProduct = new Produto();
+          this.newProduto = new /*Object*/Produto();
           this.getProdutos();
         }
       );
+      alert('Registro salvo com sucesso');
     }
+  }
+
+  getProdutos(): void {
+    this.ProdutosService.getProdutos().subscribe(
+      produtos => this.produtos = produtos);
   }
 
 }
