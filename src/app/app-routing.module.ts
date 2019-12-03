@@ -20,11 +20,11 @@ const routes: Routes = [
   
   { path: 'pedidos', component: ListaPedidosComponent },
   { path: 'cadastrarpedidos', component: PedidosComponent },
-  { path: 'detalhepedidos/:id', component: DetalhePedidosComponent },
+  { path: 'pedido/:id/detalhes', component: DetalhePedidosComponent },
 
   { path: 'produtos', component: ListaProdutosComponent },
   { path: 'cadastrarprodutos', component: ProdutosComponent },
-  { path: 'detalheprodutos/:id', component: DetalheProdutosComponent },
+  { path: 'produto/:id/detalhes', component: DetalheProdutosComponent },
 
   { path: 'clientes', component: ListaClientesComponent },
   { path: 'cadastrarclientes', component: ClientesComponent },

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { PedidosService } from './pedidos.service';
+import { Pedido } from './Pedidos';
 
 @Component({
   selector: 'app-curso',
@@ -9,26 +10,33 @@ import { PedidosService } from './pedidos.service';
 })
 export class PedidosComponent implements OnInit {
 
-  pedido: any;
-  pedidos: any[] = [];
+  private newPedido : Pedido;
 
-  constructor(private service: PedidosService) { }
+  private pedidos : Pedido[];
 
-  ngOnInit() {
-    this.pedido = new Object();
-    this.pedidos = this.service.getPedidos();
+  constructor(private PedidosService: PedidosService) {
   }
 
-  onSubmit(formulario: NgForm) {
-    if (formulario.valid) {
-      this.pedido.id =  
-      Math.random().toString(36).substring(2, 15) 
-      + Math.random().toString(36).substring(2, 15);
-      this.service.salvar(this.pedido);
-      this.pedido = new Object();
-      this.pedidos = this.service.getPedidos();
+  ngOnInit() {
+    this.newPedido = new Pedido();
+    this.getPedidos();
+  }
+
+  onSubmit(form: NgForm) {
+    if (form.valid) {
+      this.PedidosService.createPedido(this.newPedido).subscribe(
+        id => {
+          this.newPedido = new Pedido();
+          this.getPedidos();
+        }
+      );
       alert('Registro salvo com sucesso');
     }
+  }
+
+  getPedidos(): void {
+    this.PedidosService.getPedidos().subscribe(
+      pedidos => this.pedidos = pedidos);
   }
 
 }

@@ -1,6 +1,35 @@
-<h1>Informações do produto {{produto.nome}}</h1>
-<p>
-    {{produto.nome}}
-    {{produto.descricao}}
-    {{produto.preco}}
-</p>
+<br>
+<div>
+    <button routerLink="/produtos" class="btn btn-primary">Voltar</button>
+</div>
+<br>
+<h1>Detalhes do produto {{produto.nome}}</h1>
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" class="form-horizontal">
+    <div class="form-group">
+        <div class="col-sm-12">
+            <label for="Nome" class="control-label">Nome</label>
+        </div>
+        <div class="col-sm-12">
+            <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome" required #nome="ngModel"
+                [(ngModel)]="produto.nome">
+        </div>
+        <div class="col-sm-12">
+            <label for="Nome" class="control-label">Descrição</label>
+        </div>
+        <div class="col-sm-12">
+            <input type="text" class="form-control" name="descricao" id="descricao" placeholder="Descricao" required
+                #nome="ngModel" [(ngModel)]="produto.descricao">
+        </div>
+        <div class="col-sm-12">
+            <label for="Nome" class="control-label">Preço</label>
+        </div>
+        <div class="col-sm-12">
+            <input type="text" class="form-control" name="preco" id="preco" placeholder="Preco" required #nome="ngModel"
+                [(ngModel)]="produto.preco">
+        </div>
+    </div>
+</form>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3">
+    <button type="submit" [disabled]="!f.valid" class="btn btn-primary">Alterar</button>
+    <button (click)="delete()" class="btn btn-primary">Excluir</button>
+</div>

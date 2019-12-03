@@ -27,8 +27,8 @@ export class ProdutosService {
       catchError(this.handleError)
     )
   }
-  getProduto(produto): Observable<Produto[]> {
-    return this.http.get<Produto[]>(this.apiURL + '/detalheprodutos/' + produto.id)
+  getProduto(id): Observable<Produto> {
+    return this.http.get<Produto>(this.apiURL + '/produto/' + id + '/detalhes', this.httpOptions)
     .pipe(
       retry(1),
       catchError(this.handleError)
@@ -43,8 +43,8 @@ export class ProdutosService {
     )
   }
 
-  updateProduto(id, produto): Observable<Number> {
-    return this.http.put<Number>(this.apiURL + '/produto/' + id, JSON.stringify(produto), this.httpOptions)
+  updateProduto(id, produto): Observable<Produto> {
+    return this.http.put<Produto>(this.apiURL + '/produto/' + id, JSON.stringify(produto), this.httpOptions)
     .pipe(
       retry(1),
       catchError(this.handleError)

@@ -1,5 +1,5 @@
 export class Produto {
-    id: String;
+    id: Number;
     nome: String;
     descricao: String;
     preco: String;
