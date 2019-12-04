@@ -1,7 +1,7 @@
 export class Cliente {
     id: Number;
     nome: String;
-    CPF: Number;
+    cpf: Number;
     email: String;
     telefone: String;
   }

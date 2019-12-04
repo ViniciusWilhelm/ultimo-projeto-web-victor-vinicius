@@ -6,9 +6,12 @@
     <button class="btn btn-primary" routerLink="/cadastrarclientes">Cadastrar cliente</button>
     <button class="btn btn-primary" >Excluir cliente</button>
 </div>
+
 <a *ngFor="let cliente of clientes"
-    routerLink="/detalheclientes/{{cliente.id}}">
+routerLink="/cliente/{{cliente.id}}/detalhes">
   <div>
-    <h4>{{cliente.nome}}</h4>
+   <ul class="list-group"> 
+    <li class="list-group-item">{{cliente.nome}}</li> 
+  </ul>
   </div>
 </a>

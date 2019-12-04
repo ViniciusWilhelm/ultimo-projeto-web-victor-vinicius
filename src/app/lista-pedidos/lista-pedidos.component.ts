@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-
 import { PedidosService }  from '../pedidos/pedidos.service';
+import { Pedido } from '../pedidos/Pedidos';
+
 @Component({
   selector: 'app-lista-pedidos',
   templateUrl: './lista-pedidos.component.html',
@@ -9,15 +9,15 @@ import { PedidosService }  from '../pedidos/pedidos.service';
 })
 export class ListaPedidosComponent implements OnInit {
 
-  pedidos: any[] = [];
   constructor(private pedidosService: PedidosService) {}
+  private pedidos : Pedido[];
 
-
-  ngOnInit(): void {
+  ngOnInit() {
     this.getPedidos();
   }
   
   getPedidos(): void {
-    this.pedidos = this.pedidosService.getPedidos();
+    this.pedidosService.getPedidos().subscribe(
+      pedidos => this.pedidos = pedidos);
   }
 }

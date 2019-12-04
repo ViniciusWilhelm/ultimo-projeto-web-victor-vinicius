@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FuncionariosService }  from '../funcionarios/funcionarios.service';
+import { Funcionario } from '../funcionarios/Funcionarios';
+import { FuncionariosService } from '../funcionarios/funcionarios.service';
+import { NgForm } from '@angular/forms';
 
 
 @Component({
@@ -11,17 +13,39 @@ import { FuncionariosService }  from '../funcionarios/funcionarios.service';
 export class DetalheFuncionariosComponent implements OnInit {
 
   funcionario: any = new Object();
-  constructor(private route: ActivatedRoute,
-    private funcionariosService: FuncionariosService
-  ) {}
 
+  constructor(private route: ActivatedRoute,
+    private funcionariosService: FuncionariosService) { }
+
+
+  private id: any;
 
   ngOnInit(): void {
     this.getFuncionario();
+    this.getId();
   }
-  
+  getId(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.id = id;
+  }
+
   getFuncionario(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    this.funcionario = this.funcionariosService.getFuncionario(id);
+    this.funcionariosService.getFuncionario(id).subscribe(
+      funcionario => this.funcionario = funcionario);
   }
+
+  /*onSubmit(form: NgForm) {
+    if (form.valid) {
+      this.produtosService.updateProduto();
+      alert('Registro alterado com sucesso');
+    }
+  }*/
+
+  delete() {
+    this.funcionariosService.deleteFuncionario(this.id);
+    alert('Registro deletado com sucesso');
+  }
+
+
 }

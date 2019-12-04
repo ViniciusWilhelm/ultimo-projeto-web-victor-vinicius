@@ -36,14 +36,23 @@ export class DetalheProdutosComponent implements OnInit {
 
   /*onSubmit(form: NgForm) {
     if (form.valid) {
-      this.produtosService.updateProduto();
-      alert('Registro alterado com sucesso');
+      this.produtosService.updateProduto(this.id).subscribe(
+        produtos => this.produto = produtos
+      );
+      alert('Registro salvo com sucesso');
     }
   }*/
 
   delete() {
-    this.produtosService.deleteProduto(this.id);
+    this.produtosService.deleteProduto(this.id).subscribe(
+      produtos => this.id = produtos
+    );
     alert('Registro deletado com sucesso');
+  }
+
+  getProdutos(): void {
+    this.produtosService.getProdutos().subscribe(
+      produtos => this.produto = produtos);
   }
 
 

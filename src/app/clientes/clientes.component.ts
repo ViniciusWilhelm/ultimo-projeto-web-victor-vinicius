@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ClientesService } from './funcionarios.service';
+import { ClientesService } from './clientes.service';
 import { Cliente } from './Clientes';
 
 @Component({
@@ -10,32 +10,32 @@ import { Cliente } from './Clientes';
 })
 export class ClientesComponent implements OnInit {
 
-  private newFuncionario : Funcionario;
+  private newCliente : Cliente;
 
-  private funcionarios : Funcionario[];
+  private clientes : Cliente[];
 
-  constructor(private FuncionariosService: FuncionariosService) {
+  constructor(private ClientesService: ClientesService) {
   }
 
   ngOnInit() {
-    this.newFuncionario = new Funcionario();
-    this.getFuncionarios();
+    this.newCliente = new Cliente();
+    this.getClientes();
   }
 
   onSubmit(form: NgForm) {
     if (form.valid) {
-      this.FuncionariosService.createFuncionario(this.newFuncionario).subscribe(
+      this.ClientesService.createCliente(this.newCliente).subscribe(
         id => {
-          this.newFuncionario = new Funcionario();
-          this.getFuncionarios();
+          this.newCliente = new Cliente();
+          this.getClientes();
         }
       );
       alert('Registro salvo com sucesso');
     }
   }
 
-  getFuncionarios(): void {
-    this.FuncionariosService.getFuncionarios().subscribe(
-      funcionarios => this.funcionarios = funcionarios);
+  getClientes(): void {
+    this.ClientesService.getClientes().subscribe(
+      clientes => this.clientes = clientes);
   }
 }

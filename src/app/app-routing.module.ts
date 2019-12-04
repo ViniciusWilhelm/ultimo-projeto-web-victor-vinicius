@@ -28,11 +28,11 @@ const routes: Routes = [
 
   { path: 'clientes', component: ListaClientesComponent },
   { path: 'cadastrarclientes', component: ClientesComponent },
-  { path: 'detalheclientes/:id', component: DetalheClientesComponent },
+  { path: 'cliente/:id/detalhes', component: DetalheClientesComponent },
 
   { path: 'funcionarios', component: ListaFuncionariosComponent },
   { path: 'cadastrarfuncionarios', component: FuncionariosComponent },
-  { path: 'detalhefuncionarios/:id', component: DetalheFuncionariosComponent }
+  { path: 'funcionario/:id/detalhes', component: DetalheFuncionariosComponent }
 ];
 
 @NgModule({
